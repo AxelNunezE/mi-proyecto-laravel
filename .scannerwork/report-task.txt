@@ -1,0 +1,6 @@
+projectKey=cerveceria-laravel
+serverUrl=http://localhost:9000
+serverVersion=26.6.0.123539
+dashboardUrl=http://localhost:9000/dashboard?id=cerveceria-laravel
+ceTaskId=ce3d9cc6-7f74-462e-86fb-e64e5d7ed727
+ceTaskUrl=http://localhost:9000/api/ce/task?id=ce3d9cc6-7f74-462e-86fb-e64e5d7ed727

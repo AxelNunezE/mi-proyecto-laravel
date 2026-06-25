@@ -1,0 +1,35 @@
+name: Seguridad - Escaneo de Laravel (SCA)
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+    branches: ["main", "master"]
+
+jobs:
+  laravel-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar el código del repositorio
+        uses: actions/checkout@v4
+
+      - name: Ejecutar OWASP Dependency-Check
+        uses: dependency-check/DependencyCheck-action@main
+        id: Scan
+        with:
+          project: "Laravel App"
+          path: "."
+          format: "HTML"
+          out: "reports"
+          # Optimizamos omitiendo carpetas que no contienen tus declaraciones de dependencias directas
+          args: >
+            --exclude "vendor/**"
+            --exclude "node_modules/**"
+            --exclude "storage/**"
+            --exclude "tests/**"
+
+      - name: Subir reporte de vulnerabilidades
+        uses: actions/upload-artifact@v4
+        with:
+          name: Reporte-Seguridad-Laravel
+          path: reports
