@@ -22,10 +22,13 @@ jobs:
           format: "HTML"
           out: "reports"
           args: >
-            --exclude "vendor/**"
             --exclude "node_modules/**"
             --exclude "storage/**"
             --exclude "tests/**"
+            --exclude ".git/**"
+            --exclude ".github/**"
+            --exclude "public/**"
+            --exclude "bootstrap/cache/**"
 
       - name: Subir reporte de vulnerabilidades
         uses: actions/upload-artifact@v4
